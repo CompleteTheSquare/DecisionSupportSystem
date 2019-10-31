@@ -1,5 +1,0 @@
-Sub Delegate()
-
-
-
-End Sub
