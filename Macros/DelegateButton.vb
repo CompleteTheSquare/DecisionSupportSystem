@@ -42,6 +42,47 @@ Worksheets("Tasklist").Activate
 
 myRange = Worksheets("TaskList").Range("B1", "B250")
 DurationSum = WorksheetFunction.Sum(myRange)
-MsgBox ("the sum of duration is: " & DurationSum) 'total time to divide up
+MsgBox ("the sum of duration is: " & DurationSum) 'total time to divide
+
+
+
+
+
+'equal distribution
+Dim EqualDistribution As Double
+
+EqualDistribution = DurationSum / PeopleNumber ' find the number of hours for "equal work distribution"
+
+Worksheets("TaskList").Activate
+'====================================================
+Dim RowHolder As Integer
+Dim ColumnHolder As Integer
+
+Dim RowSelected As Integer
+RowSelected = 2
+
+Do While DurationSum<> 0 
+
+DurationSum = WorksheetFunction.Sum(myRange)
+
+
+
+Range("A2:E2").Select
+Selection.Copy
+Worksheets("Order").Activate
+Range(1,RowSelected)' cell it should be pasted in
+ActiveSheet.Paste
+
+
+DurationSum = 0
+
+Loop
+
+
 MsgBox ("yeehaw successful run")
 End Sub
+
+
+
+
+
