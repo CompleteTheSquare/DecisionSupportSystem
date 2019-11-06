@@ -1,4 +1,8 @@
 # DssProj
 Decision Support System Project
 
-For a concept course
+
+For concept course
+
+Repaired Range.select error
+
