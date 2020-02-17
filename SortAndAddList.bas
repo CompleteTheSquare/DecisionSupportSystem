@@ -2,7 +2,7 @@ Sub SortListAddToPlace()
 ' this sorts the information in Even and Uneven
 ' it then places the information into the EvenPlace and UnevenPlace sheets using with the formulas
 
-
+'sort methods that take each list of data and sort them by Score'
 Columns("A:G").Select
 ActiveWorkbook.Worksheets("EqualList").Sort.SortFields.Clear
 ActiveWorkbook.Worksheets("EqualList").Sort.SortFields.Add2 Key:=Range("G1:G100000") _
@@ -16,7 +16,7 @@ With ActiveWorkbook.Worksheets("EqualList").Sort
 .Apply
 End With
 
-
+'sort methods that take each list of data and sort them by Score'
 Columns("A:G").Select
 ActiveWorkbook.Worksheets("UnequalList").Sort.SortFields.Clear
 ActiveWorkbook.Worksheets("UnequalList").Sort.SortFields.Add2 Key:=Range("G1:G100000") _
@@ -31,15 +31,11 @@ With ActiveWorkbook.Worksheets("UnequalList").Sort
 End With
 
 
-
-
-
 'get TotPpl: number of people involved in proejct
 Worksheets("Menu").Activate
 Dim NumberOfPeople As Variant
 NumberOfPeople = Range("D18") 'this cell has number of ppl in group
 'end get Number of People
-
 
 'get Taskcount: number of tasks per list
 Dim TaskCount As Integer
@@ -57,7 +53,7 @@ EqualDistribution = TaskCount / NumberOfPeople
 SpacingConstant = Round(EqualDistribution) + 1
 'end get equal distribution and spacing
 
-'paste the sorted list into the unequal list'
+'paste the sorted list data into the unequal list sheet'
 Sheets("EqualList").Select
 Cells.Select
 Selection.Copy
@@ -66,6 +62,8 @@ Range("A1").Select
 ActiveSheet.Paste
 Range("A1").Select
 Dim Adjustment As Integer
+'end paste the sorted list data into the unequal list sheet'
+
 'get the row number:
 Adjustment = 1
 Dim Origin As Integer
@@ -73,7 +71,6 @@ Origin = 1
 Dim RowNumber As Integer
 RowNumber = Origin * Spacing + Adjustment
 Dim i As Integer
-i = 1
 Dim j As Integer
 i = 1
 Dim TaskCountHolder As Integer
